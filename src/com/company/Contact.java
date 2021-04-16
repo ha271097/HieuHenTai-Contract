@@ -1,0 +1,94 @@
+package com.company;
+
+public class Contact {
+    private String fullName;
+    private String phoneName;
+    private String group;
+    private String gender;
+    private String address;
+    private String mail;
+    private String dateBirth;
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public String getPhoneName() {
+        return phoneName;
+    }
+
+    public void setPhoneName(String phoneName) {
+        this.phoneName = phoneName;
+    }
+
+    public String getGroup() {
+        return group;
+    }
+
+    public void setGroup(String group) {
+        this.group = group;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public String getDateBirth() {
+        return dateBirth;
+    }
+
+    public void setDateBirth(String dateBirth) {
+        this.dateBirth = dateBirth;
+    }
+
+    public Contact() {
+    }
+
+
+    public Contact(String fullName, String phoneName, String group, String sex, String address, String mail, String dateBirth) {
+        this.fullName = fullName;
+        this.phoneName = phoneName;
+        this.group = group;
+        this.gender = gender;
+        this.address = address;
+        this.mail = mail;
+        this.dateBirth = dateBirth;
+    }
+
+    @Override
+    public String toString() {
+        return "Contact{" +
+                "fullName='" + fullName + '\'' +
+                ", phoneName='" + phoneName + '\'' +
+                ", group='" + group + '\'' +
+                ", gender='" + gender + '\'' +
+                ", address='" + address + '\'' +
+                ", mail='" + mail + '\'' +
+                ", dateBirth='" + dateBirth + '\'' +
+                '}'+"\n";
+    }
+}
