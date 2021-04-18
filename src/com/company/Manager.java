@@ -4,22 +4,29 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Manager {
-    public  void test(String test, ArrayList <Contact> arrayList){
+    // Check xem name or phone đang thêm có bị trùng hay không
+    public  boolean test(String test, ArrayList <Contact> arrayList){
         for (int i = 0 ; i < arrayList.size() ; i++) {
             if(test.equals(arrayList.get(i).getPhoneName()) || test.equals(arrayList.get(i).getFullName())){
                 System.out.println("Please enter again: ");
+                return false;
             }
         }
+        return true;
     }
+    // Thêm phần tử trong mảng
     public void add(ArrayList<Contact> arrayList){
-//        String fullName, String phoneName, String group, String gender, String address, String mail, String dateBirth
         Scanner sc = new Scanner(System.in);
         Contact newMem = new Contact();
+        do {
             System.out.println("Enter new Mem: ");
             newMem.setFullName(sc.nextLine());
-            test(newMem.getFullName(),arrayList);
+        }while (test(newMem.getFullName(), arrayList) == false);
+        do {
             System.out.println("Enter new phone: ");
             newMem.setPhoneName(sc.next());
+        }while (test(newMem.getFullName(), arrayList) == false);
+
             System.out.println("Enter group: ");
             newMem.setGroup(sc.next());
             System.out.println("Enter gender: ");
@@ -32,7 +39,7 @@ public class Manager {
             newMem.setDateBirth(sc.next());
             arrayList.add(newMem);
         }
-
+// Sửa phần tử trong mảng
     public void update(int index, ArrayList<Contact> arrayList){
         Contact newMem = new Contact();
         for (int i = 0 ; i < arrayList.size() ; i++) {
@@ -58,18 +65,20 @@ public class Manager {
         }
 
     }
+    // Xóa phần tử trong mảng
     public void deleteMem(int index, ArrayList<Contact> arrayList){
         for (int i = 0 ; i < arrayList.size() ; i++) {
             if (i == index){
                 arrayList.remove(i);
             }
-
         }
     }
+    // In ra màn hình
     public void dispayListContact(ArrayList <Contact> arrayList){
         System.out.println(arrayList);
 
     }
+    // Tìm Kiếm
     public void search(String mem, ArrayList<Contact> arrayList){
         for (int i = 0 ; i < arrayList.size() ; i++) {
             if(mem.equals(arrayList.get(i).getPhoneName() ) || mem.equals(arrayList.get(i).getFullName())) {
@@ -78,5 +87,4 @@ public class Manager {
             }
         }
     }
-
 }
