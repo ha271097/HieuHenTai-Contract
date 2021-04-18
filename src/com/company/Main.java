@@ -21,11 +21,11 @@ public class Main {
             int num = sc.nextInt();
             switch (num){
                 case 1:
-                    haanh.dispayListContact(listContact);
+                    haanh.displayListContact(listContact);
                     break;
                 case 2:
                     haanh.add(listContact);
-                    haanh.dispayListContact(listContact);
+                    haanh.displayListContact(listContact);
                     break;
                 case 3:
                     Scanner updateMem = new Scanner(System.in);
@@ -36,17 +36,23 @@ public class Main {
                     switch (numIndex){
                         case 1:
                             Scanner updateIndex = new Scanner(System.in);
-                            System.out.println("Enter index update: ");
-                            int upIndex = updateIndex.nextInt();
+                            int upIndex;
+                            do {
+                                System.out.println("Enter index update: ");
+                                 upIndex = updateIndex.nextInt();
+                            }while (haanh.testUpdateIndex(upIndex - 1 , listContact ) == false);
                             haanh.updateIndex(upIndex - 1, listContact);
-                            haanh.dispayListContact(listContact);
+                            haanh.displayListContact(listContact);
                             break;
                         case 2:
                             Scanner updateName = new Scanner(System.in);
-                            System.out.println("Enter name update: ");
-                            String upName = updateName.next();
-                            haanh.updateName(upName,listContact);
-                            haanh.dispayListContact(listContact);
+                            String upName;
+                            do{
+                                System.out.println("Enter name update: ");
+                                upName = updateName.next();
+                            }while (haanh.testUpdateName(upName, listContact) == false);
+                            haanh.updateName(upName, listContact);
+                            haanh.displayListContact(listContact);
                             break;
                         case 0:
                             System.exit(0);
@@ -56,22 +62,28 @@ public class Main {
                     Scanner deleteMem = new Scanner(System.in);
                     System.out.println("Number 1: Delete Index.");
                     System.out.println("Number 2: Delete Name.");
-                    System.out.println("Number 0: Exit.");
+                    System.out.println("Number 0: Exit..");
                     int numDelete = deleteMem.nextInt();
                     switch (numDelete){
                         case 1:
                             Scanner deleteIndex = new Scanner(System.in);
-                            System.out.println("Enter index delete: ");
-                            int deIndex = deleteIndex.nextInt();
+                            int deIndex;
+                            do {
+                                System.out.println("Enter index delete: ");
+                                deIndex = deleteIndex.nextInt();
+                            }while (haanh.testDeleteIndex(deIndex, listContact) == false);
                             haanh.deleteMemIndex(deIndex - 1, listContact);
-                            haanh.dispayListContact(listContact);
+                            haanh.displayListContact(listContact);
                             break;
                         case 2:
                             Scanner deleteName = new Scanner(System.in);
-                            System.out.println("Enter name delete: ");
-                            String deName = deleteName.nextLine();
+                            String deName;
+                            do {
+                                System.out.println("Enter name delete: ");
+                                deName = deleteName.nextLine();
+                            }while (haanh.testDeleteName(deName, listContact) == false);
                             haanh.deleteMemName(deName, listContact);
-                            haanh.dispayListContact(listContact);
+                            haanh.displayListContact(listContact);
                             break;
                         case 0:
                             System.exit(0);
@@ -106,7 +118,6 @@ public class Main {
                 case 0:
                     System.exit(0);
                     break;
-
             }
         }
     }

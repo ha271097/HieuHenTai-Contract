@@ -39,6 +39,26 @@ public class Manager {
             newMem.setDateBirth(sc.next());
             arrayList.add(newMem);
         }
+        // Check Index cần sửa có trong Contact hay không
+        public boolean testUpdateIndex(int check, ArrayList <Contact> arrayList){
+            for (int i = 0 ; i < arrayList.size() ; i++) {
+                if(check == i){
+                    return true;
+                }
+            }
+            System.out.println("Index not in Contact -- Please enter again.");
+        return false;
+        }
+        //Check name cần sửa có trong Contact hay không
+    public boolean testUpdateName(String name, ArrayList <Contact> arrayList){
+        for (int i = 0 ; i < arrayList.size() ; i++) {
+            if(name.equals(arrayList.get(i).getFullName())){
+                return true;
+            }
+        }
+        System.out.println("Name not in Contact -- Please enter again.");
+        return false;
+    }
 // Sửa phần tử trong mảng
     public void updateIndex(int index, ArrayList<Contact> arrayList){
         Contact newMem = new Contact();
@@ -86,7 +106,26 @@ public class Manager {
             }
         }
     }
-
+    // Check Index cần xóa có trong Contact hay không
+    public boolean testDeleteIndex(int index, ArrayList <Contact> arrayList){
+        for (int i = 0 ; i < arrayList.size() ; i++) {
+            if(i == index){
+                return true;
+            }
+        }
+        System.out.println("Index not in Contact -- Please enter again.");
+        return false;
+    }
+    // Check Name cần xóa có trong Contact hay không
+    public boolean testDeleteName(String name, ArrayList <Contact> arrayList){
+        for (int i = 0 ; i < arrayList.size() ; i++) {
+            if(name.equals(arrayList.get(i).getFullName())){
+                return true;
+            }
+        }
+        System.out.println("Name not in Contact -- Please enter again.");
+        return false;
+    }
     // Xóa phần tử trong mảng
     public void deleteMemIndex(int index, ArrayList<Contact> arrayList){
         for (int i = 0 ; i < arrayList.size() ; i++) {
@@ -104,9 +143,8 @@ public class Manager {
     }
 
     // In ra màn hình
-    public void dispayListContact(ArrayList <Contact> arrayList){
+    public void displayListContact(ArrayList <Contact> arrayList){
         System.out.println(arrayList);
-
     }
     // Tìm Kiếm
     public void search(String mem, ArrayList<Contact> arrayList){
