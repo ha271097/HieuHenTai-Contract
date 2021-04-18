@@ -40,7 +40,7 @@ public class Manager {
             arrayList.add(newMem);
         }
 // Sửa phần tử trong mảng
-    public void update(int index, ArrayList<Contact> arrayList){
+    public void updateIndex(int index, ArrayList<Contact> arrayList){
         Contact newMem = new Contact();
         for (int i = 0 ; i < arrayList.size() ; i++) {
             if( i == index) {
@@ -60,19 +60,49 @@ public class Manager {
                 System.out.println("Enter Date Birth: ");
                 newMem.setDateBirth(sc1.next());
                 arrayList.set(i,newMem);
-
             }
         }
-
     }
+    public void updateName(String name, ArrayList <Contact> arrayList){
+        Contact newMem = new Contact();
+        for (int i = 0 ; i < arrayList.size() ; i++) {
+            if(name.equals(arrayList.get(i).getFullName())){
+                Scanner sc1 = new Scanner(System.in);
+                System.out.println("Enter new Mem: ");
+                newMem.setFullName(sc1.nextLine());
+                System.out.println("Enter new phone: ");
+                newMem.setPhoneName(sc1.next());
+                System.out.println("Enter group: ");
+                newMem.setGroup(sc1.next());
+                System.out.println("Enter gender: ");
+                newMem.setGender(sc1.next());
+                System.out.println("Enter address: ");
+                newMem.setAddress(sc1.next());
+                System.out.println("Enter email: ");
+                newMem.setMail(sc1.next());
+                System.out.println("Enter Date Birth: ");
+                newMem.setDateBirth(sc1.next());
+                arrayList.set(i,newMem);
+            }
+        }
+    }
+
     // Xóa phần tử trong mảng
-    public void deleteMem(int index, ArrayList<Contact> arrayList){
+    public void deleteMemIndex(int index, ArrayList<Contact> arrayList){
         for (int i = 0 ; i < arrayList.size() ; i++) {
             if (i == index){
                 arrayList.remove(i);
             }
         }
     }
+    public void deleteMemName(String name, ArrayList <Contact> arrayList){
+        for (int i = 0 ; i < arrayList.size() ; i++) {
+            if( name.equals(arrayList.get(i).getFullName())){
+                 arrayList.remove(i);
+            }
+        }
+    }
+
     // In ra màn hình
     public void dispayListContact(ArrayList <Contact> arrayList){
         System.out.println(arrayList);
@@ -84,6 +114,14 @@ public class Manager {
             if(mem.equals(arrayList.get(i).getPhoneName() ) || mem.equals(arrayList.get(i).getFullName())) {
                 Contact a = arrayList.get(i);
                 System.out.println(a);
+            }
+        }
+    }
+    public void searchIndex(int num, ArrayList <Contact> arrayList){
+        for (int i = 0 ; i < arrayList.size() ; i++) {
+            if(i == num){
+                Contact b = arrayList.get(i);
+                System.out.println(b);
             }
         }
     }
