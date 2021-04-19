@@ -9,6 +9,10 @@ public class Main {
 	// write your code here
         ArrayList <Contact> listContact = new ArrayList<>();
         Manager haanh = new Manager();
+        addContact add = new addContact();
+        fixContact fixContact = new fixContact();
+        deleteContact deleteContact = new deleteContact();
+        searchContact searchContact = new searchContact();
         while (true){
             Scanner sc = new Scanner(System.in);
             System.out.println("----- WELCOME - MENU OF MR.LUON CHUA -----");
@@ -24,7 +28,7 @@ public class Main {
                     haanh.displayListContact(listContact);
                     break;
                 case 2:
-                    haanh.add(listContact);
+                    add.add(listContact);
                     haanh.displayListContact(listContact);
                     break;
                 case 3:
@@ -40,8 +44,8 @@ public class Main {
                             do {
                                 System.out.println("Enter index update: ");
                                  upIndex = updateIndex.nextInt();
-                            }while (haanh.testUpdateIndex(upIndex - 1 , listContact ) == false);
-                            haanh.updateIndex(upIndex - 1, listContact);
+                            }while (fixContact.testUpdateIndex(upIndex - 1 , listContact ) == false);
+                            fixContact.updateIndex(upIndex - 1, listContact);
                             haanh.displayListContact(listContact);
                             break;
                         case 2:
@@ -50,8 +54,8 @@ public class Main {
                             do{
                                 System.out.println("Enter name update: ");
                                 upName = updateName.next();
-                            }while (haanh.testUpdateName(upName, listContact) == false);
-                            haanh.updateName(upName, listContact);
+                            }while (fixContact.testUpdateName(upName, listContact) == false);
+                            fixContact.updateName(upName, listContact);
                             haanh.displayListContact(listContact);
                             break;
                         case 0:
@@ -71,8 +75,8 @@ public class Main {
                             do {
                                 System.out.println("Enter index delete: ");
                                 deIndex = deleteIndex.nextInt();
-                            }while (haanh.testDeleteIndex(deIndex, listContact) == false);
-                            haanh.deleteMemIndex(deIndex - 1, listContact);
+                            }while (deleteContact.testDeleteIndex(deIndex, listContact) == false);
+                            deleteContact.deleteMemIndex(deIndex - 1, listContact);
                             haanh.displayListContact(listContact);
                             break;
                         case 2:
@@ -81,8 +85,8 @@ public class Main {
                             do {
                                 System.out.println("Enter name delete: ");
                                 deName = deleteName.nextLine();
-                            }while (haanh.testDeleteName(deName, listContact) == false);
-                            haanh.deleteMemName(deName, listContact);
+                            }while (deleteContact.testDeleteName(deName, listContact) == false);
+                            deleteContact.deleteMemName(deName, listContact);
                             haanh.displayListContact(listContact);
                             break;
                         case 0:
@@ -104,8 +108,8 @@ public class Main {
                             do {
                                 System.out.println("Enter name or phone search: ");
                                 searchNorP = searchNameorPhone.next();
-                            }while (haanh.testName(searchNorP, listContact) == false);
-                            haanh.search(searchNorP, listContact);
+                            }while (searchContact.testName(searchNorP, listContact) == false);
+                            searchContact.search(searchNorP, listContact);
                             break;
                         case 2:
                             Scanner searchInex = new Scanner(System.in);
@@ -113,8 +117,8 @@ public class Main {
                             do {
                                 System.out.println("Enter index search: ");
                                 searchI = searchInex.nextInt();
-                            }while (haanh.testIndex(searchI, listContact) == false);
-                            haanh.searchIndex(searchI - 1, listContact);
+                            }while (searchContact.testIndex(searchI, listContact) == false);
+                            searchContact.searchIndex(searchI - 1, listContact);
                             break;
                         case 0:
                             System.exit(0);
