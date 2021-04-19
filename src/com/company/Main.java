@@ -100,14 +100,20 @@ public class Main {
                     switch (numSearch){
                         case 1:
                             Scanner searchNameorPhone = new Scanner(System.in);
-                            System.out.println("Enter name or phone search: ");
-                            String searchNorP = searchNameorPhone.next();
+                            String searchNorP;
+                            do {
+                                System.out.println("Enter name or phone search: ");
+                                searchNorP = searchNameorPhone.next();
+                            }while (haanh.testName(searchNorP, listContact) == false);
                             haanh.search(searchNorP, listContact);
                             break;
                         case 2:
                             Scanner searchInex = new Scanner(System.in);
-                            System.out.println("Enter index search: ");
-                            int searchI = searchInex.nextInt();
+                            int searchI;
+                            do {
+                                System.out.println("Enter index search: ");
+                                searchI = searchInex.nextInt();
+                            }while (haanh.testIndex(searchI, listContact) == false);
                             haanh.searchIndex(searchI - 1, listContact);
                             break;
                         case 0:
@@ -115,7 +121,7 @@ public class Main {
                     }
 
                     break;
-                case 0:
+                default:
                     System.exit(0);
                     break;
             }
