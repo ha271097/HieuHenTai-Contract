@@ -119,7 +119,6 @@ public class Main {
                         case 0:
                             System.exit(0);
                     }
-
                     break;
                 default:
                     System.exit(0);

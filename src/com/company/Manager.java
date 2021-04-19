@@ -14,6 +14,14 @@ public class Manager {
         }
         return true;
     }
+    // Check xem email đúng hay sai
+    public boolean checkMail(String mail ){
+        if(mail.contains("@") && mail.contains(".")){
+            return true;
+        }
+        System.out.println("Email fail -- Please enter again.");
+        return false;
+    }
     // Thêm phần tử trong mảng
     public void add(ArrayList<Contact> arrayList){
         Scanner sc = new Scanner(System.in);
@@ -27,29 +35,31 @@ public class Manager {
             newMem.setPhoneName(sc.next());
         }while (test(newMem.getFullName(), arrayList) == false);
 
-            System.out.println("Enter group: ");
-            newMem.setGroup(sc.next());
-            System.out.println("Enter gender: ");
-            newMem.setGender(sc.next());
-            System.out.println("Enter address: ");
-            newMem.setAddress(sc.next());
+        System.out.println("Enter group: ");
+        newMem.setGroup(sc.next());
+        System.out.println("Enter gender: ");
+        newMem.setGender(sc.next());
+        System.out.println("Enter address: ");
+        newMem.setAddress(sc.next());
+        do {
             System.out.println("Enter email: ");
             newMem.setMail(sc.next());
-            System.out.println("Enter Date Birth: ");
-            newMem.setDateBirth(sc.next());
-            arrayList.add(newMem);
-        }
-        // Check Index cần sửa có trong Contact hay không
-        public boolean testUpdateIndex(int check, ArrayList <Contact> arrayList){
-            for (int i = 0 ; i < arrayList.size() ; i++) {
-                if(check == i){
-                    return true;
-                }
+        }while (checkMail(newMem.getMail()) == false);
+        System.out.println("Enter Date Birth: ");
+        newMem.setDateBirth(sc.next());
+        arrayList.add(newMem);
+    }
+    // Check Index cần sửa có trong Contact hay không
+    public boolean testUpdateIndex(int check, ArrayList <Contact> arrayList){
+        for (int i = 0 ; i < arrayList.size() ; i++) {
+            if(check == i){
+                return true;
             }
-            System.out.println("Index not in Contact -- Please enter again.");
-        return false;
         }
-        //Check name cần sửa có trong Contact hay không
+        System.out.println("Index not in Contact -- Please enter again.");
+        return false;
+    }
+    //Check name cần sửa có trong Contact hay không
     public boolean testUpdateName(String name, ArrayList <Contact> arrayList){
         for (int i = 0 ; i < arrayList.size() ; i++) {
             if(name.equals(arrayList.get(i).getFullName())){
@@ -59,7 +69,7 @@ public class Manager {
         System.out.println("Name not in Contact -- Please enter again.");
         return false;
     }
-// Sửa phần tử trong mảng
+    // Sửa phần tử trong mảng
     public void updateIndex(int index, ArrayList<Contact> arrayList){
         Contact newMem = new Contact();
         for (int i = 0 ; i < arrayList.size() ; i++) {
@@ -137,7 +147,7 @@ public class Manager {
     public void deleteMemName(String name, ArrayList <Contact> arrayList){
         for (int i = 0 ; i < arrayList.size() ; i++) {
             if( name.equals(arrayList.get(i).getFullName())){
-                 arrayList.remove(i);
+                arrayList.remove(i);
             }
         }
     }
@@ -183,4 +193,5 @@ public class Manager {
             }
         }
     }
+
 }

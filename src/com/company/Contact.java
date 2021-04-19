@@ -1,6 +1,6 @@
 package com.company;
 
-public class Contact {
+public class Contact  {
     private String fullName;
     private String phoneName;
     private String group;
@@ -69,7 +69,7 @@ public class Contact {
     }
 
 
-    public Contact(String fullName, String phoneName, String group, String sex, String address, String mail, String dateBirth) {
+    public Contact(String fullName, String phoneName, String group, String gender, String address, String mail, String dateBirth) {
         this.fullName = fullName;
         this.phoneName = phoneName;
         this.group = group;
