@@ -1,9 +1,11 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Scanner;
 
-public class Main {
+public class Main  {
 
     public static void main(String[] args) {
 	// write your code here
@@ -124,6 +126,8 @@ public class Main {
                             System.exit(0);
                     }
                     break;
+                case 6:
+                    ;
                 default:
                     System.exit(0);
                     break;

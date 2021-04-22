@@ -1,6 +1,6 @@
 package com.company;
 
-public class Contact  {
+public class Contact   {
     private String fullName;
     private String phoneName;
     private String group;
@@ -8,6 +8,26 @@ public class Contact  {
     private String address;
     private String mail;
     private String dateBirth;
+    private String note;
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
+
+    public Contact(String fullName, String phoneName, String group, String gender, String address, String mail, String dateBirth, String note) {
+        this.fullName = fullName;
+        this.phoneName = phoneName;
+        this.group = group;
+        this.gender = gender;
+        this.address = address;
+        this.mail = mail;
+        this.dateBirth = dateBirth;
+        this.note = note;
+    }
 
     public String getFullName() {
         return fullName;
@@ -68,17 +88,6 @@ public class Contact  {
     public Contact() {
     }
 
-
-    public Contact(String fullName, String phoneName, String group, String gender, String address, String mail, String dateBirth) {
-        this.fullName = fullName;
-        this.phoneName = phoneName;
-        this.group = group;
-        this.gender = gender;
-        this.address = address;
-        this.mail = mail;
-        this.dateBirth = dateBirth;
-    }
-
     @Override
     public String toString() {
         return "Contact{" +
@@ -89,6 +98,7 @@ public class Contact  {
                 ", address='" + address + '\'' +
                 ", mail='" + mail + '\'' +
                 ", dateBirth='" + dateBirth + '\'' +
-                '}'+"\n";
+                ", note='" + note + '\'' +
+                '}'+ "\n";
     }
 }
