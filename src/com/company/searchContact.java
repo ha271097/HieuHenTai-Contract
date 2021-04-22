@@ -6,7 +6,7 @@ public class searchContact {
     // Check name or phone có trong Contact không
     public boolean testName(String name, ArrayList<Contact> arrayList){
         for (int i = 0 ; i < arrayList.size() ; i++) {
-            if(name.equals(arrayList.get(i).getFullName()) || name.equals(arrayList.get(i).getPhoneName())){
+            if(name.equals(arrayList.get(i).getFullName()) || name.equals(arrayList.get(i).getPhone())){
                 return true;
             }
         }
@@ -26,7 +26,7 @@ public class searchContact {
     // Tìm Kiếm
     public void search(String mem, ArrayList<Contact> arrayList){
         for (int i = 0 ; i < arrayList.size() ; i++) {
-            if(mem.equals(arrayList.get(i).getPhoneName() ) || mem.equals(arrayList.get(i).getFullName())) {
+            if(mem.equals(arrayList.get(i).getPhone() ) || mem.equals(arrayList.get(i).getFullName())) {
                 Contact a = arrayList.get(i);
                 System.out.println(a);
             }

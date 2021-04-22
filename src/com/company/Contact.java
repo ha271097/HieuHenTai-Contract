@@ -2,7 +2,7 @@ package com.company;
 
 public class Contact   {
     private String fullName;
-    private String phoneName;
+    private String phone;
     private String group;
     private String gender;
     private String address;
@@ -20,7 +20,7 @@ public class Contact   {
 
     public Contact(String fullName, String phoneName, String group, String gender, String address, String mail, String dateBirth, String note) {
         this.fullName = fullName;
-        this.phoneName = phoneName;
+        this.phone = phoneName;
         this.group = group;
         this.gender = gender;
         this.address = address;
@@ -37,12 +37,12 @@ public class Contact   {
         this.fullName = fullName;
     }
 
-    public String getPhoneName() {
-        return phoneName;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setPhoneName(String phoneName) {
-        this.phoneName = phoneName;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getGroup() {
@@ -92,7 +92,7 @@ public class Contact   {
     public String toString() {
         return "Contact{" +
                 "fullName='" + fullName + '\'' +
-                ", phoneName='" + phoneName + '\'' +
+                ", phoneName='" + phone + '\'' +
                 ", group='" + group + '\'' +
                 ", gender='" + gender + '\'' +
                 ", address='" + address + '\'' +

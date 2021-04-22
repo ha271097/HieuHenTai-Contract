@@ -15,6 +15,7 @@ public class Main  {
         fixContact fixContact = new fixContact();
         deleteContact deleteContact = new deleteContact();
         searchContact searchContact = new searchContact();
+        SortContact sortContact = new SortContact();
         while (true){
             Scanner sc = new Scanner(System.in);
             System.out.println("----- WELCOME - MENU OF MR.LUON CHUA -----");
@@ -27,10 +28,12 @@ public class Main  {
             int num = sc.nextInt();
             switch (num){
                 case 1:
+                    sortContact.sortContact(listContact);
                     haanh.displayListContact(listContact);
                     break;
                 case 2:
                     add.add(listContact);
+                    sortContact.sortContact(listContact);
                     haanh.displayListContact(listContact);
                     break;
                 case 3:
@@ -48,6 +51,7 @@ public class Main  {
                                  upIndex = updateIndex.nextInt();
                             }while (fixContact.testUpdateIndex(upIndex - 1 , listContact ) == false);
                             fixContact.updateIndex(upIndex - 1, listContact);
+                            sortContact.sortContact(listContact);
                             haanh.displayListContact(listContact);
                             break;
                         case 2:
@@ -58,6 +62,7 @@ public class Main  {
                                 upName = updateName.next();
                             }while (fixContact.testUpdateName(upName, listContact) == false);
                             fixContact.updateName(upName, listContact);
+                            sortContact.sortContact(listContact);
                             haanh.displayListContact(listContact);
                             break;
                         case 0:
@@ -79,6 +84,7 @@ public class Main  {
                                 deIndex = deleteIndex.nextInt();
                             }while (deleteContact.testDeleteIndex(deIndex, listContact) == false);
                             deleteContact.deleteMemIndex(deIndex - 1, listContact);
+                            sortContact.sortContact(listContact);
                             haanh.displayListContact(listContact);
                             break;
                         case 2:
@@ -89,6 +95,7 @@ public class Main  {
                                 deName = deleteName.nextLine();
                             }while (deleteContact.testDeleteName(deName, listContact) == false);
                             deleteContact.deleteMemName(deName, listContact);
+                            sortContact.sortContact(listContact);
                             haanh.displayListContact(listContact);
                             break;
                         case 0:

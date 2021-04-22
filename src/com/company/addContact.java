@@ -1,6 +1,5 @@
 package com.company;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -9,7 +8,7 @@ public class addContact {
     // Check Phone
     public  boolean test(String test, ArrayList<Contact> arrayList){
         for (int i = 0 ; i < arrayList.size() ; i++) {
-            if(test.equals(arrayList.get(i).getPhoneName()) || test.equals(arrayList.get(i).getFullName())){
+            if(test.equals(arrayList.get(i).getPhone()) || test.equals(arrayList.get(i).getFullName())){
                 System.out.println("Please enter again: ");
                 return false;
             }
@@ -46,8 +45,8 @@ public class addContact {
         do {
             System.out.println("Enter new phone: ");
             System.out.println("// +xx - xxxxxxxxx");
-            newMem.setPhoneName(sc1.nextLine());
-        }while (test(newMem.getFullName(), arrayList) == false || checkInvalidPhone(newMem.getPhoneName()) == false);
+            newMem.setPhone(sc1.nextLine());
+        }while (test(newMem.getFullName(), arrayList) == false || checkInvalidPhone(newMem.getPhone()) == false);
 
         Scanner sc2 = new Scanner(System.in);
         System.out.println("Enter group: ");
@@ -76,5 +75,6 @@ public class addContact {
         newMem.setNote(sc7.nextLine());
 
         arrayList.add(newMem);
+
     }
 }

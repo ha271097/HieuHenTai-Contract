@@ -35,7 +35,7 @@ public class fixContact {
                 System.out.println("Enter new Mem: ");
                 newMem.setFullName(sc1.nextLine());
                 System.out.println("Enter new phone: ");
-                newMem.setPhoneName(sc1.next());
+                newMem.setPhone(sc1.next());
                 System.out.println("Enter group: ");
                 newMem.setGroup(sc1.next());
                 System.out.println("Enter gender: ");
@@ -58,7 +58,7 @@ public class fixContact {
                 System.out.println("Enter new Mem: ");
                 newMem.setFullName(sc1.nextLine());
                 System.out.println("Enter new phone: ");
-                newMem.setPhoneName(sc1.next());
+                newMem.setPhone(sc1.next());
                 System.out.println("Enter group: ");
                 newMem.setGroup(sc1.next());
                 System.out.println("Enter gender: ");
