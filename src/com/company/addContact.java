@@ -75,6 +75,10 @@ public class addContact {
         newMem.setNote(sc7.nextLine());
 
         arrayList.add(newMem);
-
+        try {
+            FileFactory.writeContact("Contact.txt",arrayList);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

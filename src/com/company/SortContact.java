@@ -10,7 +10,6 @@ public class SortContact {
                     Contact temp = arrayList.get(j);
                     arrayList.set(j,arrayList.get(j -1));
                     arrayList.set(j - 1, temp);
-
                 }
             }
         }

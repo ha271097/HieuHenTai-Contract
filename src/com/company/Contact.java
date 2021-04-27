@@ -1,6 +1,8 @@
 package com.company;
 
-public class Contact   {
+import java.io.Serializable;
+
+public class Contact implements Serializable {
     private String fullName;
     private String phone;
     private String group;

@@ -1,8 +1,7 @@
 package com.company;
 
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.Scanner;
 
 public class Main  {
@@ -10,6 +9,11 @@ public class Main  {
     public static void main(String[] args) {
 	// write your code here
         ArrayList <Contact> listContact = new ArrayList<>();
+        try {
+            listContact = FileFactory.readContact("Contact.txt");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         Manager haanh = new Manager();
         addContact add = new addContact();
         fixContact fixContact = new fixContact();
@@ -59,7 +63,7 @@ public class Main  {
                             String upName;
                             do{
                                 System.out.println("Enter name update: ");
-                                upName = updateName.next();
+                                upName = updateName.nextLine();
                             }while (fixContact.testUpdateName(upName, listContact) == false);
                             fixContact.updateName(upName, listContact);
                             sortContact.sortContact(listContact);
@@ -116,7 +120,7 @@ public class Main  {
                             String searchNorP;
                             do {
                                 System.out.println("Enter name or phone search: ");
-                                searchNorP = searchNameorPhone.next();
+                                searchNorP = searchNameorPhone.nextLine();
                             }while (searchContact.testName(searchNorP, listContact) == false);
                             searchContact.search(searchNorP, listContact);
                             break;
@@ -133,8 +137,6 @@ public class Main  {
                             System.exit(0);
                     }
                     break;
-                case 6:
-                    ;
                 default:
                     System.exit(0);
                     break;
