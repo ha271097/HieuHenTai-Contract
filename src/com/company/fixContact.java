@@ -3,7 +3,9 @@ package com.company;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
 public class fixContact {
+//    addContact checkMail = new addContact();
 
     // Check Index cần sửa có trong Contact hay không
     public boolean testUpdateIndex(int check, ArrayList <Contact> arrayList){
@@ -31,45 +33,66 @@ public class fixContact {
         Contact newMem = new Contact();
         for (int i = 0 ; i < arrayList.size() ; i++) {
             if( i == index) {
-                Scanner sc1 = new Scanner(System.in);
-                System.out.println("Enter new Mem: ");
-                newMem.setFullName(sc1.nextLine());
-                System.out.println("Enter new phone: ");
-                newMem.setPhone(sc1.next());
-                System.out.println("Enter group: ");
-                newMem.setGroup(sc1.next());
-                System.out.println("Enter gender: ");
-                newMem.setGender(sc1.next());
-                System.out.println("Enter address: ");
-                newMem.setAddress(sc1.next());
-                System.out.println("Enter email: ");
-                newMem.setMail(sc1.next());
-                System.out.println("Enter Date Birth: ");
-                newMem.setDateBirth(sc1.next());
+                do {
+                    newMem.setFullName(InputInformation.inputMem());
+                }while (!addContact.testCheckPhone(newMem.getFullName(), arrayList));
+
+                do {
+                    newMem.setPhone(InputInformation.inputPhone());
+                }while (!addContact.testCheckPhone(newMem.getFullName(), arrayList) || !addContact.checkInvalidPhone(newMem.getPhone()));
+
+                newMem.setGroup(InputInformation.inputGroup());
+                newMem.setGender(InputInformation.inputGender());
+                newMem.setAddress(InputInformation.inputAddress());
+
+                do {
+                    newMem.setMail(InputInformation.inputEmail());
+                }while (!addContact.checkMail(newMem.getMail()));
+
+                newMem.setDateBirth(InputInformation.inputBirth());
+                newMem.setNote(InputInformation.inputNote());
+
                 arrayList.set(i,newMem);
+
+                try {
+                    FileFactory.writeContact("Contact.txt",arrayList);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
+
     public void updateName(String name, ArrayList <Contact> arrayList){
         Contact newMem = new Contact();
         for (int i = 0 ; i < arrayList.size() ; i++) {
             if(name.equals(arrayList.get(i).getFullName())){
-                Scanner sc1 = new Scanner(System.in);
-                System.out.println("Enter new Mem: ");
-                newMem.setFullName(sc1.nextLine());
-                System.out.println("Enter new phone: ");
-                newMem.setPhone(sc1.next());
-                System.out.println("Enter group: ");
-                newMem.setGroup(sc1.next());
-                System.out.println("Enter gender: ");
-                newMem.setGender(sc1.next());
-                System.out.println("Enter address: ");
-                newMem.setAddress(sc1.next());
-                System.out.println("Enter email: ");
-                newMem.setMail(sc1.next());
-                System.out.println("Enter Date Birth: ");
-                newMem.setDateBirth(sc1.next());
+                do {
+                    newMem.setFullName(InputInformation.inputMem());
+                }while (!addContact.testCheckPhone(newMem.getFullName(), arrayList));
+
+                do {
+                    newMem.setPhone(InputInformation.inputPhone());
+                }while (!addContact.testCheckPhone(newMem.getFullName(), arrayList) || !addContact.checkInvalidPhone(newMem.getPhone()));
+
+                newMem.setGroup(InputInformation.inputGroup());
+                newMem.setGender(InputInformation.inputGender());
+                newMem.setAddress(InputInformation.inputAddress());
+
+                do {
+                    newMem.setMail(InputInformation.inputEmail());
+                }while (!addContact.checkMail(newMem.getMail()));
+
+                newMem.setDateBirth(InputInformation.inputBirth());
+                newMem.setNote(InputInformation.inputNote());
+
                 arrayList.set(i,newMem);
+
+                try {
+                    FileFactory.writeContact("Contact.txt",arrayList);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         }
     }

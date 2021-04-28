@@ -6,7 +6,7 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class FileFactory {
-    public static ArrayList<Contact> readContact(String path) throws IOException {
+    public static ArrayList<Contact> readContact(String path) {
         File file = new File(path);
         ArrayList<Contact> arrayList = new ArrayList<>();
         FileInputStream fileInputStream = null;
@@ -26,8 +26,12 @@ public class FileFactory {
         }
         finally {
             if (objectInputStream!=null){
-                objectInputStream.close();
-                fileInputStream.close();
+                try {
+                    objectInputStream.close();
+                    fileInputStream.close();
+                }catch (Exception ex){
+                    ex.printStackTrace();
+                }
             }
         }
         return arrayList;

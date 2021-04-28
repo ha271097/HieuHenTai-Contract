@@ -11,7 +11,7 @@ public class Main  {
         ArrayList <Contact> listContact = new ArrayList<>();
         try {
             listContact = FileFactory.readContact("Contact.txt");
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         Manager haanh = new Manager();
@@ -38,22 +38,22 @@ public class Main  {
                 case 2:
                     add.add(listContact);
                     sortContact.sortContact(listContact);
-                    haanh.displayListContact(listContact);
+                    System.out.println("Add complete.. !!");
                     break;
                 case 3:
                     Scanner updateMem = new Scanner(System.in);
                     System.out.println("Number 1: Update index.");
                     System.out.println("Number 2: Update name.");
-                    System.out.println("Number 0: Exit..");
+                    System.out.println("Number 0: Exit..!");
                     int numIndex = updateMem.nextInt();
                     switch (numIndex){
                         case 1:
                             Scanner updateIndex = new Scanner(System.in);
                             int upIndex;
                             do {
-                                System.out.println("Enter index update: ");
+                                System.out.println("Enter index Update: ");
                                  upIndex = updateIndex.nextInt();
-                            }while (fixContact.testUpdateIndex(upIndex - 1 , listContact ) == false);
+                            }while (!fixContact.testUpdateIndex(upIndex - 1 , listContact ));
                             fixContact.updateIndex(upIndex - 1, listContact);
                             sortContact.sortContact(listContact);
                             haanh.displayListContact(listContact);
@@ -62,9 +62,9 @@ public class Main  {
                             Scanner updateName = new Scanner(System.in);
                             String upName;
                             do{
-                                System.out.println("Enter name update: ");
+                                System.out.println("Enter name Fix: ");
                                 upName = updateName.nextLine();
-                            }while (fixContact.testUpdateName(upName, listContact) == false);
+                            }while (!fixContact.testUpdateName(upName, listContact));
                             fixContact.updateName(upName, listContact);
                             sortContact.sortContact(listContact);
                             haanh.displayListContact(listContact);

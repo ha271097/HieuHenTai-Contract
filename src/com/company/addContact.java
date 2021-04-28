@@ -1,12 +1,11 @@
 package com.company;
-
 import java.util.ArrayList;
-import java.util.Scanner;
+
 
 public class addContact {
 
     // Check Phone
-    public  boolean test(String test, ArrayList<Contact> arrayList){
+    public static  boolean testCheckPhone(String test, ArrayList<Contact> arrayList){
         for (int i = 0 ; i < arrayList.size() ; i++) {
             if(test.equals(arrayList.get(i).getPhone()) || test.equals(arrayList.get(i).getFullName())){
                 System.out.println("Please enter again: ");
@@ -16,7 +15,7 @@ public class addContact {
         return true;
     }
     // Check định dạng phone
-    public boolean checkInvalidPhone(String phone){
+    public static boolean checkInvalidPhone(String phone){
         String phonePattenrn = "\\+\\d{2}-\\d{9}";
         if(phone.matches(phonePattenrn)){
             return true;
@@ -25,56 +24,40 @@ public class addContact {
         return false;
     }
     // Check xem email đúng hay sai
-    public boolean checkMail(String mail ){
-        if(mail.contains("@") && mail.contains(".")){
+    public static boolean checkMail(String mail ){
+        String mailPattenr =  "^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)$";
+        if(mail.matches(mailPattenr)){
             return true;
         }
         System.out.println("Email fail -- Please enter again.");
         return false;
     }
+
     // Thêm phần tử trong mảng
     public void add(ArrayList<Contact> arrayList){
-        Scanner sc = new Scanner(System.in);
         Contact newMem = new Contact();
+
         do {
-            System.out.println("Enter new Mem: ");
-            newMem.setFullName(sc.nextLine());
-        }while (test(newMem.getFullName(), arrayList) == false);
+            newMem.setFullName(InputInformation.inputMem());
+        }while (!testCheckPhone(newMem.getFullName(), arrayList));
 
-        Scanner sc1 = new Scanner(System.in);
         do {
-            System.out.println("Enter new phone: ");
-            System.out.println("// +xx - xxxxxxxxx");
-            newMem.setPhone(sc1.nextLine());
-        }while (test(newMem.getFullName(), arrayList) == false || checkInvalidPhone(newMem.getPhone()) == false);
+            newMem.setPhone(InputInformation.inputPhone());
+        }while (!testCheckPhone(newMem.getFullName(), arrayList) || !checkInvalidPhone(newMem.getPhone()));
 
-        Scanner sc2 = new Scanner(System.in);
-        System.out.println("Enter group: ");
-        newMem.setGroup(sc2.nextLine());
+        newMem.setGroup(InputInformation.inputGroup());
+        newMem.setGender(InputInformation.inputGender());
+        newMem.setAddress(InputInformation.inputAddress());
 
-        Scanner sc3 = new Scanner(System.in);
-        System.out.println("Enter gender: ");
-        newMem.setGender(sc3.nextLine());
-
-        Scanner sc4= new Scanner(System.in);
-        System.out.println("Enter address: ");
-        newMem.setAddress(sc4.nextLine());
-
-        Scanner sc5 = new Scanner(System.in);
         do {
-            System.out.println("Enter email: ");
-            newMem.setMail(sc5.nextLine());
-        }while (checkMail(newMem.getMail()) == false);
+            newMem.setMail(InputInformation.inputEmail());
+        }while (!checkMail(newMem.getMail()));
 
-        Scanner sc6 = new Scanner(System.in);
-        System.out.println("Enter Date Birth: ");
-        newMem.setDateBirth(sc6.nextLine());
-
-        Scanner sc7 = new Scanner(System.in);
-        System.out.println("Note: ");
-        newMem.setNote(sc7.nextLine());
+        newMem.setDateBirth(InputInformation.inputBirth());
+        newMem.setNote(InputInformation.inputNote());
 
         arrayList.add(newMem);
+
         try {
             FileFactory.writeContact("Contact.txt",arrayList);
         } catch (Exception e) {
