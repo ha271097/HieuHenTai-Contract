@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class InputInformation {
     private static final Scanner SCANNER = new Scanner(System.in);
+    // nhập Information
     public static String inputMem() {
         System.out.println("Enter new Mem: ");
         return SCANNER.nextLine();

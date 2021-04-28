@@ -6,8 +6,8 @@ public class addContact {
 
     // Check Phone
     public static  boolean testCheckPhone(String test, ArrayList<Contact> arrayList){
-        for (int i = 0 ; i < arrayList.size() ; i++) {
-            if(test.equals(arrayList.get(i).getPhone()) || test.equals(arrayList.get(i).getFullName())){
+        for (Contact contact : arrayList) {
+            if (test.equals(contact.getPhone()) || test.equals(contact.getFullName())) {
                 System.out.println("Please enter again: ");
                 return false;
             }

@@ -15,8 +15,8 @@ public class deleteContact {
     }
     // Check Name cần xóa có trong Contact hay không
     public boolean testDeleteName(String name, ArrayList <Contact> arrayList){
-        for (int i = 0 ; i < arrayList.size() ; i++) {
-            if(name.equals(arrayList.get(i).getFullName())){
+        for (Contact contact : arrayList) {
+            if (name.equals(contact.getFullName())) {
                 return true;
             }
         }
@@ -30,12 +30,23 @@ public class deleteContact {
                 arrayList.remove(i);
             }
         }
+        try {
+            FileFactory.writeContact("Contact.txt",arrayList);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     public void deleteMemName(String name, ArrayList <Contact> arrayList){
         for (int i = 0 ; i < arrayList.size() ; i++) {
             if( name.equals(arrayList.get(i).getFullName())){
                 arrayList.remove(i);
+                break;
             }
+        }
+        try {
+            FileFactory.writeContact("Contact.txt",arrayList);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

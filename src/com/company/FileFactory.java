@@ -1,20 +1,17 @@
 package com.company;
 
-import com.company.Contact;
-
 import java.io.*;
 import java.util.ArrayList;
 
 public class FileFactory {
+    // Đọc File
     public static ArrayList<Contact> readContact(String path) {
         File file = new File(path);
         ArrayList<Contact> arrayList = new ArrayList<>();
         FileInputStream fileInputStream = null;
         ObjectInputStream objectInputStream = null;
         try{
-            if(!file.exists()){
-            file.createNewFile();
-            }
+            if(!file.exists()) file.createNewFile();
             if(file.length()>0){
                  fileInputStream = new  FileInputStream(file);
                  objectInputStream = new ObjectInputStream(fileInputStream);
@@ -36,7 +33,7 @@ public class FileFactory {
         }
         return arrayList;
     }
-
+    // Ghi File
     public static void writeContact(String path, ArrayList<Contact> arrayList) throws Exception{
         FileOutputStream fileOutputStream = null;
         ObjectOutputStream objectOutputStream = null;

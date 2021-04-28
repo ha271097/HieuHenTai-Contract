@@ -1,11 +1,8 @@
 package com.company;
 
 import java.util.ArrayList;
-import java.util.Scanner;
-
 
 public class fixContact {
-//    addContact checkMail = new addContact();
 
     // Check Index cần sửa có trong Contact hay không
     public boolean testUpdateIndex(int check, ArrayList <Contact> arrayList){
@@ -19,8 +16,8 @@ public class fixContact {
     }
     //Check name cần sửa có trong Contact hay không
     public boolean testUpdateName(String name, ArrayList<Contact> arrayList){
-        for (int i = 0 ; i < arrayList.size() ; i++) {
-            if(name.equals(arrayList.get(i).getFullName())){
+        for (Contact contact : arrayList) {
+            if (name.equals(contact.getFullName())) {
                 return true;
             }
         }
@@ -73,7 +70,7 @@ public class fixContact {
 
                 do {
                     newMem.setPhone(InputInformation.inputPhone());
-                }while (!addContact.testCheckPhone(newMem.getFullName(), arrayList) || !addContact.checkInvalidPhone(newMem.getPhone()));
+                }while (!addContact.testCheckPhone(newMem.getPhone(), arrayList) || !addContact.checkInvalidPhone(newMem.getPhone()));
 
                 newMem.setGroup(InputInformation.inputGroup());
                 newMem.setGender(InputInformation.inputGender());
